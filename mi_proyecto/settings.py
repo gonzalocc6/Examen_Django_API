@@ -37,17 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     # Django Rest Framework
     'rest_framework',
-    'rest_framework.authtoken',  # Genera la tabla para los Tokens de autenticación
-
+    'rest_framework.authtoken',  
+    'drf_spectacular',  
     # Tu App
     'biblioteca',
 ]
 
 # Configuración global para Token Authentication
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
@@ -55,6 +55,13 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
 }
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'API Biblioteca - Examen Django DRF',
+    'DESCRIPTION': 'Documentación interactiva de la API de gestión de Autores, Libros y Préstamos.',
+    'VERSION': '1.0.0',
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
